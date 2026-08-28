@@ -1,122 +1,364 @@
-#form{
+/* =========================
+   FORMULÁRIO PRINCIPAL
+========================= */
+
+#form {
     width: 850px;
+    max-width: 95%;
     min-height: 650px;
+
     margin: 20px auto;
-    padding: 25px;
+    padding: 30px 40px;
+
+    box-sizing: border-box;
+
     color: var(--primary);
     background-color: var(--bg);
+
     border: 1px solid var(--border);
+    border-radius: 4px;
 }
 
-h2{
-    padding: 25px;
-    margin: 30px 0;
+
+/* =========================
+   TÍTULO
+========================= */
+
+h2 {
+    padding: 10px;
+    margin: 10px 0 30px;
+
     text-align: center;
     text-transform: uppercase;
+
     color: var(--primary);
     letter-spacing: 3px;
 }
 
-#form-corrida{
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+#form-corrida {
     width: 100%;
     min-height: 600px;
-    padding: 20px;
 }
 
-label{
+
+/* =========================
+   LABELS DOS CAMPOS
+========================= */
+
+#form-corrida > label {
     display: block;
+
     padding: 20px 0 8px;
+
     color: var(--primary);
+
     text-transform: uppercase;
     letter-spacing: 2px;
+
     font-size: 14px;
     font-weight: bold;
 }
 
-input,
-textarea{
+
+/* =========================
+   INPUTS NORMAIS
+========================= */
+
+#form-corrida input:not([type="checkbox"]) {
     width: 100%;
+    height: 50px;
+
+    box-sizing: border-box;
+
     padding: 15px;
+
     border: none;
     border-radius: 5px;
+
     background: var(--surface);
     color: white;
+
     font-size: 16px;
+
     outline: none;
-    box-sizing: border-box;
 }
 
-textarea{
-    min-height: 120px;
-    resize: none;
+
+#form-corrida input:not([type="checkbox"]):focus {
+    outline: 1px solid var(--primary);
 }
 
-input[type="date"]{
+
+/* =========================
+   DATA
+========================= */
+
+#form-corrida input[type="date"] {
     height: 50px;
 }
 
-#distancias{
-    width: 100%;
-    margin-top: 25px;
+
+/* =================================================
+   DISTÂNCIAS
+================================================= */
+
+/*
+   O HTML possui:
+
+   checkbox
+   label
+   checkbox
+   label
+   checkbox
+   label
+
+   Então vamos posicionar cada elemento
+   individualmente.
+*/
+
+
+/* Primeiro título "Distancias Disponiveis*" */
+
+#form-corrida > label[for="distancia"] {
+    margin-top: 5px;
 }
 
-#distancias h3{
-    color: var(--primary);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+
+/* Segundo título "Distâncias Disponíveis*" */
+
+#form-corrida > label:not([for]) {
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
-.opcao{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 18px;
+
+/* =========================
+   CHECKBOX
+========================= */
+
+#form-corrida input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 22px !important;
+    height: 22px !important;
+
+    min-width: 22px !important;
+    max-width: 22px !important;
+
+    min-height: 22px !important;
+    max-height: 22px !important;
+
+    padding: 0 !important;
+
+    margin: 0 10px 18px 0 !important;
+
+    box-sizing: border-box;
+
+    display: inline-block;
+
+    vertical-align: middle;
+
+    background: var(--surface);
+
+    border: 2px solid #555;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition: 0.2s ease;
 }
 
-.opcao label{
-    padding: 0;
-    margin: 0;
+
+/* Hover */
+
+#form-corrida input[type="checkbox"]:hover {
+    border-color: var(--primary);
+
+    transform: scale(1.08);
+}
+
+
+/* Marcado */
+
+#form-corrida input[type="checkbox"]:checked {
+    background: var(--primary);
+
+    border-color: var(--primary);
+}
+
+
+/* Check */
+
+#form-corrida input[type="checkbox"]:checked::after {
+    content: "✓";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -55%);
+
+    color: #000;
+
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+/* =================================================
+   LABEL DOS CHECKBOX
+================================================= */
+
+#form-corrida input[type="checkbox"] + label {
+    display: inline-block;
+
+    width: auto !important;
+
+    padding: 0 !important;
+
+    margin: 0 0 18px 0 !important;
+
     color: white;
+
     text-transform: none;
+
     letter-spacing: 0;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
     cursor: pointer;
+
+    vertical-align: middle;
 }
 
-input[type="radio"]{
-    width: 22px;
-    height: 22px;
-    cursor: pointer;
+
+/* Texto marcado */
+
+#form-corrida input[type="checkbox"]:checked + label {
+    color: var(--primary);
 }
 
-#div-btns{
+
+/* =================================================
+   QUEBRA ENTRE AS DISTÂNCIAS
+================================================= */
+
+/*
+   Como não podemos alterar o HTML,
+   usamos pseudo-elementos nos labels
+   para criar espaço visual.
+*/
+
+#distancia5 + label {
+    margin-right: 300px !important;
+}
+
+#distancia10 + label {
+    margin-right: 300px !important;
+}
+
+
+/* =================================================
+   BOTÕES
+================================================= */
+
+#div-btns {
     width: 100%;
+
     display: flex;
+
     justify-content: center;
+    align-items: center;
+
     gap: 20px;
-    margin-top: 40px;
+
+    margin-top: 30px;
 }
 
-button{
+
+button {
     width: 180px;
     height: 45px;
+
     border: none;
     border-radius: 5px;
+
     cursor: pointer;
+
     color: var(--primary);
+
     background: var(--surface);
+
     font-size: 18px;
-    transition: .3s;
+    font-weight: bold;
+
+    transition: 0.2s ease;
 }
 
-button:hover{
+
+button:hover {
     background: var(--surface2);
+
+    transform: translateY(-2px);
 }
 
-#btnAdd{
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   BOTÕES
+========================= */
+
+#btnAdd {
     background: var(--surface);
 }
 
-#btnLimpar{
+
+#btnLimpar {
     background: var(--surface);
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 700px) {
+
+    #form {
+        width: 95%;
+
+        padding: 25px 20px;
+    }
+
+
+    h2 {
+        font-size: 20px;
+
+        letter-spacing: 2px;
+    }
+
+
+    #div-btns {
+        flex-direction: column;
+    }
+
+
+    button {
+        width: 100%;
+    }
 }
