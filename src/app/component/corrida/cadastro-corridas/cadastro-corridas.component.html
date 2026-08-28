@@ -1,0 +1,39 @@
+<section id="form">
+    <h2> Cadastro de Corrida</h2>
+
+    <form id="form-corrida" (ngSubmit)="salvar()">
+        
+        <label for="descricao"> descricao* </label>
+        <input type="text" name="descricao" id="descricao" class="input01" maxlength="60" placeholder="Digite seu descricao completo" [(ngModel)]="descricao">
+        
+        <label for="data"> Data* </label>
+        <input type="date" name="data" id="data" class="input01" maxlength="60" placeholder="Digite seu data completo" [(ngModel)]="data">
+
+        <label for="preco"> Preço da incrição* </label>
+        <input type="number" name="preco" id="preco" class="input01" maxlength="60" placeholder="Digite seu preco completo" [(ngModel)]="preco">
+
+        <label for="distancia"> Distancias Disponiveis* </label>
+        
+        <label>Distâncias Disponíveis*</label>
+
+        <input type="checkbox" name="distancia5" id="distancia5" [(ngModel)]="distancia5">
+        <label for="distancia5">5 km</label>
+        
+        
+        <input type="checkbox" name="distancia10" id="distancia10" [(ngModel)]="distancia10">
+        <label for="distancia10">10 km</label>
+        
+        
+        <input type="checkbox" name="distancia25" id="distancia25" [(ngModel)]="distancia25">
+        <label for="distancia25">25 km</label>
+
+
+        <div id="div-btns">
+            <button type="submit" id="btnAdd"> {{!editar ? 'Cadastrar' : 'Alterar'}} </button>
+
+            <button type="reset" id="btnLimpar" (click)="limparDados()" >Limpar</button>
+        </div>
+        
+    </form>
+
+</section>
